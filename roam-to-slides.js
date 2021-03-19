@@ -59,23 +59,31 @@ function slidesToHtml (slides) {
 
 function slideToHtml (slide) {
     if (typeof slide.title !== 'undefined' && !slide.children) {
-        return `<section>${slide.title}</section>\n`
+        return `<section>${colorTags(slide.title)}</section>\n`
     }
 
     if (slide.title && slide.children) {
         return `<section>
-            <p class="path">${slide.path}</p>
-            <h2>${slide.title}</h2>
-            <ol>
+            <p class="path">${colorTags(slide.path)}</p>
+            <h2>${colorTags(slide.title)}</h2>
+            <ul>
             ${slide.children && slide.children
-                .map((child, i) => child && `<li class="fragment">${child}</li>`)
-            // .filter((a) => a)
+                .map((child, i) => child && `<li class="fragment">${colorTags(child)}</li>`)
                 .join('')} 
-          </ol>
+          </ul>
         </section>`
     }
 }
 
 function populateTemplate (template, slides) {
     return template.replace('INSERT_SLIDES_HERE', slides);
+}
+
+function colorTags (text) {
+    let output = text;
+    while (output.indexOf('[[') !== -1 && output.indexOf(']]') !== -1) {
+        output = output.replace('[[', '<a>');
+        output = output.replace(']]', '</a>');
+    }
+    return output;
 }

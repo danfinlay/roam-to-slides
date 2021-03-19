@@ -12,3 +12,4 @@ node_modules/
 dist/*.map
 roam.json
 
+index.html
