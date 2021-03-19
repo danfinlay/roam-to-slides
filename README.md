@@ -2,6 +2,13 @@
 
 A simple script for converting an arbitrary Roam Research page json export into a reveal.js slideshow.
 
+![demonstration gif](./demonstration.gif)
+
+The general behavior is that the slideshow will:
+- Start with a slide for the page title
+- The second slide has the page title but lists the top-level bullets and reveals them one press at a time.
+- For any slide with children, it will have a title, but will reveal them one at a time as a bulleted list.
+
 Usage
 - Clone/download this repository
 - On a roam page, select "Export"

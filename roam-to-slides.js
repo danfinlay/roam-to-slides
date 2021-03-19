@@ -45,6 +45,7 @@ function slidesToHtml (slides) {
     slides.forEach((slide) => {
         html += slideToHtml(slide);
     });
+    html += '<section>Questions?</section>\n'
     html += '</div>'
     return html;
 }
