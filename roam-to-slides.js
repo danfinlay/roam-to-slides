@@ -10,6 +10,7 @@ const slides = []; // Slide[];
 /**
  * interface Slide {
  *   title: string;
+ *   path: string;
  *   children: string[];
  * }
  */
@@ -18,10 +19,8 @@ addSlides(roamJson, slides);
 const html = slidesToHtml(slides);
 const rendered = populateTemplate(template, html);
 fs.writeFileSync(outPath, rendered);
-console.log(slides.slice(0,4))
 
-function addSlides (json, slides, title = null) {
-
+function addSlides (json, slides, path = '') {
     if (!Array.isArray(json)) return;
     json.forEach((slide) => {
         if (!('title' in slide) && !('children' in slide)) return;
@@ -33,10 +32,18 @@ function addSlides (json, slides, title = null) {
         }
 
         slides.push({
+            path,
             title: slide.title || slide.string,
             children: slide?.children?.map(child => child.string)
         })
-        addSlides(slide.children, slides);
+
+        let updatedPath = path;
+        if (slide.string) {
+           updatedPath += ` > ${slide.string}`;
+        } else if (slide.title) {
+            updatedPath += slide.title;
+        }
+        addSlides(slide.children, slides, updatedPath);
     })
 }
 
@@ -57,7 +64,8 @@ function slideToHtml (slide) {
 
     if (slide.title && slide.children) {
         return `<section>
-            <h1>${slide.title}</h1>
+            <p class="path">${slide.path}</p>
+            <h2>${slide.title}</h2>
             <ol>
             ${slide.children && slide.children
                 .map((child, i) => child && `<li class="fragment">${child}</li>`)
