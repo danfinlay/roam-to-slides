@@ -1811,6 +1811,12 @@ $notesWidthPercent: 25%;
 	visibility: hidden;
 }
 
+// Adding scrollable slide support per StackOverflow solution
+// https://stackoverflow.com/questions/35237862/best-way-to-handle-overflowing-reveal-js-slide
+.scrollable-slide {
+    height: 800px;
+    overflow-y: auto !important;
+}
 
 /*********************************************
  * PRINT STYLES
