@@ -15,7 +15,7 @@ Usage
 - On the export screen, select "JSON" type
 - Unzip the exported bundle
 - Rename the exported .json file to `roam.json` in this folder
-- With node.js installed, run `node roam-to-slides.js`
+- With node.js installed, run `node convert-local.js`
 
 This folder will now be a working slideshow of that presentation. You can either host it on any http-server like github-pages, apache, or whatever you want. I use [http-server](https://www.npmjs.com/package/http-server) for local previewing.
 
