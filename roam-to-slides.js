@@ -1,12 +1,3 @@
-const roamJson = require('./roam.json');
-const fs = require('fs');
-const path = require('path');
-const inPath = path.join(__dirname, 'template.html');
-const template = fs.readFileSync(inPath).toString();
-const outPath = path.join(__dirname, 'index.html');
-
-const slides = []; // Slide[];
-
 /**
  * interface Slide {
  *   title: string;
@@ -15,10 +6,12 @@ const slides = []; // Slide[];
  * }
  */
 
-addSlides(roamJson, slides);
-const html = slidesToHtml(slides);
-const rendered = populateTemplate(template, html);
-fs.writeFileSync(outPath, rendered);
+exports.roamToSlideHtml = function (roamGraph) {
+    let slides = [];
+    addSlides(roamGraph, []);
+    const html = slidesToHtml(slides);
+    return html;
+}
 
 function addSlides (json, slides, path = '') {
     if (!Array.isArray(json)) return;
@@ -73,10 +66,6 @@ function slideToHtml (slide) {
           </ul>
         </section>`
     }
-}
-
-function populateTemplate (template, slides) {
-    return template.replace('INSERT_SLIDES_HERE', slides);
 }
 
 function colorTags (text) {
