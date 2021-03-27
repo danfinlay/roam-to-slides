@@ -107,8 +107,9 @@ export default class Location {
 	 * writing the hash
 	 */
 	writeURL( delay ) {
+		let srcdoc = false;
 		if (window.location.href === 'about:srcdoc') {
-			return;
+			srcdoc = true;
 		}
 
 		let config = this.Reveal.getConfig();
@@ -127,12 +128,12 @@ export default class Location {
 
 			// If we're configured to push to history OR the history
 			// API is not avaialble.
-			if( config.history ) {
+			if( config.history && !srcdoc) {
 				window.location.hash = hash;
 			}
 			// If we're configured to reflect the current slide in the
 			// URL without pushing to history.
-			else if( config.hash ) {
+			else if( config.hash && !srcdoc) {
 				// If the hash is empty, don't add it to the URL
 				if( hash === '/' ) {
 					window.history.replaceState( null, null, window.location.pathname + window.location.search );
