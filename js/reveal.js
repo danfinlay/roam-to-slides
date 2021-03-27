@@ -2278,6 +2278,7 @@ export default function( revealElement, options ) {
 	 * The reverse of #navigatePrev().
 	 */
 	function navigateNext() {
+		console.log('navigateNext!')
 
 		navigationHistory.hasNavigatedHorizontally = true;
 		navigationHistory.hasNavigatedVertically = true;
