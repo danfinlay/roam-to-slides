@@ -683,6 +683,8 @@ $controlsArrowAngleActive: 36deg;
 	display: block;
 	z-index: 11;
 	opacity: 1;
+	height: 100%;
+	overflow-y: auto;
 }
 
 .reveal .slides>section:empty,
