@@ -107,6 +107,9 @@ export default class Location {
 	 * writing the hash
 	 */
 	writeURL( delay ) {
+		if (window.location.href === 'about:srcdoc') {
+			return;
+		}
 
 		let config = this.Reveal.getConfig();
 		let currentSlide = this.Reveal.getCurrentSlide();
