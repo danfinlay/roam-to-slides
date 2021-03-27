@@ -1,6 +1,6 @@
 # Roam to Slideshow
 
-A simple script for converting an arbitrary Roam Research page json export into a reveal.js slideshow.
+A simple script for converting an arbitrary Roam Research page json export into a reveal.js slideshow. [Live demo](https://danfinlay.github.io/roam-to-slides/)
 
 ![demonstration gif](./demonstration.gif)
 
