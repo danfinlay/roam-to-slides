@@ -1346,7 +1346,8 @@ export default function( revealElement, options ) {
 		fragments.update();
 
 		// Update the URL hash
-		location.writeURL();
+		// Disabled for roam-to-slides, because when iFramed this violates a security policy.
+		// location.writeURL();
 
 		cueAutoSlide();
 
@@ -1390,7 +1391,8 @@ export default function( revealElement, options ) {
 		backgrounds.create();
 
 		// Write the current hash to the URL
-		location.writeURL();
+		// Disabled for roam-to-slides, because when iFramed this violates a security policy.
+		// location.writeURL()
 
 		fragments.sortAll();
 
