@@ -1,0 +1,66 @@
+/**
+ * MetaMask theme for reveal.js. This is a fork of the 'white' theme.
+ *
+ * By Dan Finlay <dan@danfinlay.com>
+ */
+
+
+// Default mixins and settings -----------------
+@import "../template/mixins";
+@import "../template/settings";
+// ---------------------------------------------
+
+
+// Include theme-specific fonts
+@import url(./fonts/source-sans-pro/source-sans-pro.css);
+
+
+// Override theme settings (see ../template/settings.scss)
+$backgroundColor: #fff;
+
+$mainColor: #222;
+$headingColor: #222;
+
+$mainFontSize: 42px;
+$mainFont: Euclid, Roboto, Helvetica, Arial, sans-serif;
+$headingFont: Euclid, Roboto, Helvetica, Arial, sans-serif;
+$headingTextShadow: none;
+$headingLetterSpacing: normal;
+$headingTextTransform: none;
+$headingFontWeight: 600;
+$linkColor: #2a76dd;
+$linkColorHover: lighten( $linkColor, 15% );
+$selectionBackgroundColor: lighten( $linkColor, 25% );
+
+$heading1Size: 2.5em;
+$heading2Size: 1.3em;
+$heading3Size: 1.3em;
+$heading4Size: 1.0em;
+$metamaskBlue: #037dd6;
+
+.path {
+  text-align: left;
+  color: $metamaskBlue;
+  font-size: 0.8em;
+
+  ::after {
+      width: 25px;
+      height: 4px;
+      background-color: $metamaskBlue;
+      margin: 4px;
+      padding: 0px;
+  }
+}
+
+.fragment li {
+    font-size: 0.9em;
+}
+
+// Change text colors against dark slide backgrounds
+@include dark-bg-text-color(#fff);
+
+
+// Theme template ------------------------------
+@import "../template/theme";
+// ---------------------------------------------
+
